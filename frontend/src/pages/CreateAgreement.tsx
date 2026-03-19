@@ -77,8 +77,31 @@ const CreateAgreement: React.FC = () => {
       <div className="create-page">
         <div className="success-card card">
           <div className="success-icon">✓</div>
-          <h2>Agreement Submitted</h2>
-          <p>Your transaction has been broadcast to the Stacks network. It will be confirmed in the next block.</p>
+          <h2>Agreement Created!</h2>
+          <p>Your agreement has been broadcast to the Stacks network. Here's what happens next:</p>
+          <div className="success-steps">
+            <div className="success-step">
+              <span className="success-step-num">1</span>
+              <div>
+                <strong>Party B accepts</strong>
+                <span>The counterparty must accept the agreement to activate it.</span>
+              </div>
+            </div>
+            <div className="success-step">
+              <span className="success-step-num">2</span>
+              <div>
+                <strong>Both parties stake</strong>
+                <span>Once active, you and Party B each lock your stake.</span>
+              </div>
+            </div>
+            <div className="success-step">
+              <span className="success-step-num">3</span>
+              <div>
+                <strong>Resolve the agreement</strong>
+                <span>Mark success or failure when the work is done.</span>
+              </div>
+            </div>
+          </div>
           <div className="success-actions">
             <Link to="/" className="btn-primary">View Dashboard</Link>
             <button

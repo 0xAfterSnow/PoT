@@ -35,8 +35,6 @@ const API_BASE_URL = USE_TESTNET
   ? 'https://api.testnet.hiro.so'
   : 'https://api.mainnet.hiro.so';
 
-// Hiro wallet stores mainnet at index 0, testnet at index 1.
-// Always pick the address that matches the active network.
 function extractAddress(data: any): string | null {
   const stxAddresses = data?.addresses?.stx;
   if (!stxAddresses || stxAddresses.length === 0) return null;
@@ -259,7 +257,7 @@ export const PoTProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     try {
       localStorage.removeItem('stacks-session');
       localStorage.removeItem('blockstack-session');
-    } catch (_) {}
+    } catch (_) { }
     setConnected(false);
     setAddress(null);
     setBalance(null);
@@ -428,9 +426,7 @@ export const PoTProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       if (!address) throw new Error('Wallet not connected');
       const stakeUSTX = Math.floor(params.stakeAmount * 1_000_000);
 
-      // Fetch current Stacks block height so we can compute an absolute deadline.
-      // The contract checks: (> deadline stacks-block-height), so we need
-      // currentBlockHeight + relativeBlocks, NOT a Unix timestamp or a raw offset.
+
       let currentBlockHeight = 0;
       try {
         const res = await fetch(`${API_BASE_URL}/extended/v2/blocks?limit=1`);

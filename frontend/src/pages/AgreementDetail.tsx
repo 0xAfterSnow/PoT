@@ -132,6 +132,8 @@ const AgreementDetail: React.FC = () => {
                 <div className="stake-status">
                   {agreement.partyAStaked ? (
                     <span className="staked-badge">✓ Staked</span>
+                  ) : agreement.status === 'PENDING' ? (
+                    <span className="not-staked-badge pending">Pending Acceptance</span>
                   ) : (
                     <span className="not-staked-badge">Awaiting Stake</span>
                   )}
@@ -149,6 +151,8 @@ const AgreementDetail: React.FC = () => {
                 <div className="stake-status">
                   {agreement.partyBStaked ? (
                     <span className="staked-badge">✓ Staked</span>
+                  ) : agreement.status === 'PENDING' ? (
+                    <span className="not-staked-badge pending">Pending Acceptance</span>
                   ) : (
                     <span className="not-staked-badge">Awaiting Stake</span>
                   )}
@@ -368,6 +372,17 @@ const AgreementDetail: React.FC = () => {
                     <span>Waiting for Party B to accept…</span>
                   </div>
                 )}
+
+                {/* Disputed — waiting for resolver (party view) */}
+                {agreement.status === 'DISPUTED' && isParty && !isResolver && (
+                  <div className="disputed-waiting-state">
+                    <div className="disputed-icon">⚖</div>
+                    <div className="disputed-text">
+                      <strong>Dispute in progress</strong>
+                      <span>The resolver ({agreement.resolver ? `${agreement.resolver.slice(0, 10)}…${agreement.resolver.slice(-6)}` : ''}) has been notified and will issue a decision. No further action needed from you.</span>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -376,7 +391,7 @@ const AgreementDetail: React.FC = () => {
           {txSent && (
             <div className="tx-banner success-banner">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                <circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" />
               </svg>
               {txSent}
             </div>
@@ -384,7 +399,7 @@ const AgreementDetail: React.FC = () => {
           {error && (
             <div className="tx-banner error-banner">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+                <circle cx="12" cy="12" r="10" /><line x1="15" y1="9" x2="9" y2="15" /><line x1="9" y1="9" x2="15" y2="15" />
               </svg>
               {error}
             </div>

@@ -13,7 +13,7 @@ const Dashboard: React.FC = () => {
 
   const filters: FilterStatus[] = ['ALL', 'PENDING', 'ACTIVE', 'COMPLETED', 'FAILED', 'DISPUTED', 'RESOLVED'];
 
-  const filtered = agreements.filter(a => {
+  const filtered = [...agreements].reverse().filter(a => {
     const matchStatus = filter === 'ALL' || a.status === filter;
     const matchSearch =
       !search ||

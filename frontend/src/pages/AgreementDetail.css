@@ -19,7 +19,9 @@
   transition: color 0.2s;
 }
 
-.back-link:hover { color: var(--text-secondary); }
+.back-link:hover {
+  color: var(--text-secondary);
+}
 
 .detail-id-row {
   display: flex;
@@ -109,8 +111,13 @@
   transition: background 0.2s;
 }
 
-.party-detail-row:hover { background: var(--bg-raised); }
-.party-detail-row.is-you { background: var(--bitcoin-glow); }
+.party-detail-row:hover {
+  background: var(--bg-raised);
+}
+
+.party-detail-row.is-you {
+  background: var(--bitcoin-glow);
+}
 
 .party-badge-large {
   width: 36px;
@@ -163,7 +170,9 @@
   font-family: var(--font-mono);
 }
 
-.stake-status { flex-shrink: 0; }
+.stake-status {
+  flex-shrink: 0;
+}
 
 .staked-badge {
   font-size: 11px;
@@ -183,6 +192,12 @@
   padding: 3px 8px;
   border-radius: 100px;
   font-family: var(--font-mono);
+}
+
+.not-staked-badge.pending {
+  color: var(--warn, #f5a623);
+  background: var(--warn-dim, rgba(245, 166, 35, 0.08));
+  border-color: var(--warn, #f5a623);
 }
 
 .parties-divider {
@@ -247,7 +262,9 @@
   font-family: var(--font-mono);
 }
 
-.term-value.bitcoin { color: var(--bitcoin); }
+.term-value.bitcoin {
+  color: var(--bitcoin);
+}
 
 /* Stake progress */
 .stake-progress {
@@ -266,7 +283,9 @@
   opacity: 0.4;
 }
 
-.stake-step.done { opacity: 1; }
+.stake-step.done {
+  opacity: 1;
+}
 
 .stake-step-dot {
   width: 12px;
@@ -289,7 +308,9 @@
   font-family: var(--font-mono);
 }
 
-.stake-step.done span { color: var(--text-secondary); }
+.stake-step.done span {
+  color: var(--text-secondary);
+}
 
 .stake-step-line {
   height: 2px;
@@ -373,6 +394,7 @@
   border-color: var(--success);
   color: var(--success);
 }
+
 .btn-action.success:hover:not(:disabled) {
   background: var(--success);
   color: var(--bg-void);
@@ -383,6 +405,7 @@
   border-color: var(--danger);
   color: var(--danger);
 }
+
 .btn-action.danger:hover:not(:disabled) {
   background: var(--danger);
   color: white;
@@ -399,6 +422,7 @@
   border-color: var(--bitcoin);
   color: var(--bitcoin);
 }
+
 .btn-action.bitcoin:hover:not(:disabled) {
   background: var(--bitcoin);
   color: var(--bg-void);
@@ -408,14 +432,16 @@
   display: inline-block;
   width: 12px;
   height: 12px;
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-top-color: currentColor;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
 }
 
 /* Resolver select */
-.resolver-action { gap: 12px; }
+.resolver-action {
+  gap: 12px;
+}
 
 .resolver-select {
   display: flex;
@@ -452,9 +478,23 @@
   flex-shrink: 0;
 }
 
-.terminal-icon.completed { background: var(--info-dim); color: var(--info); border: 1px solid var(--info); }
-.terminal-icon.failed { background: var(--danger-dim); color: var(--danger); border: 1px solid var(--danger); }
-.terminal-icon.resolved { background: var(--bitcoin-dim); color: var(--bitcoin); border: 1px solid var(--bitcoin); }
+.terminal-icon.completed {
+  background: var(--info-dim);
+  color: var(--info);
+  border: 1px solid var(--info);
+}
+
+.terminal-icon.failed {
+  background: var(--danger-dim);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.terminal-icon.resolved {
+  background: var(--bitcoin-dim);
+  color: var(--bitcoin);
+  border: 1px solid var(--bitcoin);
+}
 
 .waiting-state {
   display: flex;
@@ -463,6 +503,40 @@
   font-size: 13px;
   color: var(--text-muted);
   padding: 12px;
+}
+
+.disputed-waiting-state {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px;
+  background: var(--warn-dim, rgba(245, 166, 35, 0.08));
+  border: 1px solid var(--warn, #f5a623);
+  border-radius: var(--radius-md);
+}
+
+.disputed-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.disputed-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.disputed-text strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--warn, #f5a623);
+}
+
+.disputed-text span {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 .observer-note {
@@ -539,15 +613,20 @@
   transition: all 0.2s;
 }
 
-.btn-primary:hover { background: #ffaa33; opacity: 1; }
+.btn-primary:hover {
+  background: #ffaa33;
+  opacity: 1;
+}
 
 @media (max-width: 900px) {
   .detail-grid {
     grid-template-columns: 1fr;
   }
+
   .detail-sidebar {
     position: static;
   }
+
   .terms-grid {
     grid-template-columns: 1fr 1fr;
   }
