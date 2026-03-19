@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+:root {
+  --bg-void: #080b10;
+  --bg-deep: #0d1117;
+  --bg-surface: #111820;
+  --bg-raised: #161e28;
+  --bg-hover: #1a2433;
+  --border: #1e2d3d;
+  --border-bright: #2a3f55;
+  --border-accent: #f7931a44;
+
+  --text-primary: #e8edf5;
+  --text-secondary: #7a8fa8;
+  --text-muted: #445566;
+  --text-inverse: #080b10;
+
+  --bitcoin: #f7931a;
+  --bitcoin-dim: #f7931a33;
+  --bitcoin-glow: #f7931a22;
+  --success: #00d9a3;
+  --success-dim: #00d9a322;
+  --danger: #ff4757;
+  --danger-dim: #ff475722;
+  --warn: #ffd32a;
+  --warn-dim: #ffd32a22;
+  --info: #4a9eff;
+  --info-dim: #4a9eff22;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.03) inset;
+  --shadow-glow: 0 0 40px rgba(247,147,26,0.12);
+}
+
+/* ── Light theme ──────────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg-void: #f5f0eb;
+  --bg-deep: #ede8e2;
+  --bg-surface: #faf7f4;
+  --bg-raised: #ffffff;
+  --bg-hover: #f0ebe4;
+  --border: #ddd5c8;
+  --border-bright: #c8bdb0;
+  --border-accent: #f7931a55;
+
+  --text-primary: #1a1410;
+  --text-secondary: #6b5a48;
+  --text-muted: #a8967f;
+  --text-inverse: #faf7f4;
+
+  --bitcoin: #e8860f;
+  --bitcoin-dim: #f7931a22;
+  --bitcoin-glow: #f7931a18;
+  --success: #00b88a;
+  --success-dim: #00b88a1a;
+  --danger: #e03445;
+  --danger-dim: #e034451a;
+  --warn: #d4a017;
+  --warn-dim: #d4a0171a;
+  --info: #2c7dd6;
+  --info-dim: #2c7dd61a;
+
+  --shadow-card: 0 2px 16px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.8) inset;
+  --shadow-glow: 0 0 40px rgba(247,147,26,0.10);
+}
+
+[data-theme="light"] body::before {
+  opacity: 0.15;
+}
+
+[data-theme="light"] body::after {
+  background-image:
+    linear-gradient(rgba(247,147,26,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247,147,26,0.035) 1px, transparent 1px);
+}
+
+[data-theme="light"] .navbar {
+  background: rgba(245, 240, 235, 0.88);
+}
+
+/* ────────────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* Selection */
+::selection {
+  background: var(--bitcoin-dim);
+  color: var(--bitcoin);
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--bitcoin);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* Grid pattern */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(247,147,26,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247,147,26,0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+code, pre, .mono {
+  font-family: var(--font-mono);
+}
+
+/* Links */
+a {
+  color: var(--bitcoin);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+a:hover { opacity: 0.8; }
+
+/* Buttons */
+button {
+  font-family: var(--font-display);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Input */
+input, textarea, select {
+  font-family: var(--font-display);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: 14px;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--bitcoin);
+  box-shadow: 0 0 0 3px var(--bitcoin-glow);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Utility classes */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px var(--bitcoin-dim); }
+  50% { box-shadow: 0 0 40px var(--bitcoin-dim), 0 0 60px var(--bitcoin-glow); }
+}
+
+.fade-in { animation: fadeIn 0.4s ease forwards; }
+.slide-in { animation: slideIn 0.3s ease forwards; }
+.animate-pulse { animation: pulse 2s ease-in-out infinite; }
+.animate-spin { animation: spin 0.8s linear infinite; }
+.animate-glow { animation: glow 3s ease-in-out infinite; }
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-surface) 25%,
+    var(--bg-raised) 50%,
+    var(--bg-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+.status-pending { background: var(--warn-dim); color: var(--warn); border: 1px solid var(--warn); }
+.status-active { background: var(--success-dim); color: var(--success); border: 1px solid var(--success); }
+.status-completed { background: var(--info-dim); color: var(--info); border: 1px solid var(--info); }
+.status-failed { background: var(--danger-dim); color: var(--danger); border: 1px solid var(--danger); }
+.status-disputed { background: var(--warn-dim); color: var(--warn); border: 1px solid var(--warn); }
+.status-resolved { background: var(--bitcoin-dim); color: var(--bitcoin); border: 1px solid var(--bitcoin); }
+
+/* Cards */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  border-color: var(--border-bright);
+}
+
+.card-interactive:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+}
